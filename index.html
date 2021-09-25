@@ -142,10 +142,9 @@
                     if (Number(num1)===0){
 
                     }else {
-                        for(let i = num1; i>0; i--){
+                        for(let i = Number(num1); i>0; i--){
                             n *= i;
                         }
-
                     }
                     messageText.innerHTML="The factorial of " + num1 + " is: "+ n;
                     console.log("First number: " + num1);
