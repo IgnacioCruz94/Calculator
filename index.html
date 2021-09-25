@@ -81,7 +81,7 @@
                     console.log(error)
                 }
                 try {
-                    if (Number(input2)===0) throw "You can not divide /0";
+                    if (Number(input1)<0) throw "The factorial of a negative number does not exist";
                 } catch (error) {
                     console.log(error)
                 } 
@@ -137,8 +137,8 @@
             let vextern=15;
             function factorial(){
                 const num1= document.getElementById("InputText1").value;
-                let n = 1;
                 if (isNaN(num1)===false && num1 != "" && Number(num1)>=0){
+                    let n = 1;
                     if (Number(num1)===0){
 
                     }else {
@@ -147,17 +147,12 @@
                         }
 
                     }
-
-                }
-                
-                messageText.innerHTML="The factorial of " + num1 + " is: "+ n;
-                console.log("First number: " + num1);
-                console.log("Factorial: " + n);
+                    messageText.innerHTML="The factorial of " + num1 + " is: "+ n;
+                    console.log("First number: " + num1);
+                    console.log("Factorial: " + n);
+                }               
             }
             
-            
-
-
             document.getElementById("ActionButton1").addEventListener("click", validation_main)
             document.getElementById("ActionButton1").addEventListener("click", sum)
             document.getElementById("ActionButton2").addEventListener("click", validation_main)
