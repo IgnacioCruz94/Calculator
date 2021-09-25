@@ -1,6 +1,176 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Calculator</h1>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Calculator</title>
+        <style>
+            #message {
+                color: blue;
+            }
+            body {
+                text-align: center;                
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Calculator</h1>
+
+        <label for="InputText1">First Number:</label>
+        <input type="text" name="number1" id="InputText1"><br><br>
+
+        <label for="InputText2">Second Number:</label>
+        <input type="text" name="number2" id="InputText2"><br><br>
+
+        <button id="ActionButton1" >Sum</button>
+        <button id="ActionButton2">Subtraction</button>
+        <button id="ActionButton3">Multiply </button>
+        <button id="ActionButton4">Division</button>
+        <button id="ActionButton5">Factorial</button>
+
+        <p id="message"></p>
+
+        <script>
+            const messageText=document.getElementById("message");
+            messageText.innerHTML="";
+
+            function validation_main() {
+                const input1= document.getElementById("InputText1").value;
+                const input2= document.getElementById("InputText2").value;
+                try {
+                    if (isNaN(input1)) throw "The first input is not a number";
+                } catch (error) {
+                    console.log(error)
+                }
+                try {
+                    if (isNaN(input2)) throw "The second input is not a number";
+                } catch (error) {
+                    console.log(error)
+                }
+                try {
+                    if (input1==="") throw "The first input is empty";
+                } catch (error) {
+                    console.log(error)
+                } 
+                try {
+                    if (input2==="") throw "The second input is empty";
+                } catch (error) {
+                    console.log(error)
+                }  
+            }
+
+            function validationDivision(){
+                const input2= document.getElementById("InputText2").value;
+                try {
+                    if (Number(input2)===0) throw "You can not divide /0";
+                } catch (error) {
+                    console.log(error)
+                } 
+            }
+
+            function validationFactorial(){
+                const input1= document.getElementById("InputText1").value;
+                try {
+                    if (isNaN(input1)) throw "The first input is not a number";
+                } catch (error) {
+                    console.log(error)
+                }
+                try {
+                    if (input1==="") throw "The first input is empty";
+                } catch (error) {
+                    console.log(error)
+                }
+                try {
+                    if (Number(input2)===0) throw "You can not divide /0";
+                } catch (error) {
+                    console.log(error)
+                } 
+            }
+
+            function sum() {
+                const num1= document.getElementById("InputText1").value;
+                const num2= document.getElementById("InputText2").value;
+                if (isNaN(num1)===false && isNaN(num2)===false && num1 != "" && num2 !="") {
+                    const sum_=Number(num1) + Number(num2);
+                    messageText.innerHTML="The sum of the " + num1 + " and " + num2 +" is: "+ sum_;
+                    console.log("First number: " + num1);
+                    console.log("Second number: " + num2);
+                    console.log("Sum: " + sum_);
+                }                
+            }
+
+            function subtraction(){
+                const num1= document.getElementById("InputText1").value;
+                const num2= document.getElementById("InputText2").value;
+                if (isNaN(num1)===false && isNaN(num2)===false && num1 != "" && num2 !="") {
+                    const subtraction_=Number(num1) - Number(num2);
+                    messageText.innerHTML="The subtraction of " + num1 + " minus " + num2 +" is: "+ subtraction_;
+                    console.log("First number: " + num1);
+                    console.log("Second number: " + num2);
+                    console.log("Subtraction: " + subtraction_);
+                }
+            }
+
+            function multiply(){
+                const num1= document.getElementById("InputText1").value;
+                const num2= document.getElementById("InputText2").value;
+                if (isNaN(num1)===false && isNaN(num2)===false && num1 != "" && num2 != "") {
+                    const multiplication=Number(num1) * Number(num2);
+                    messageText.innerHTML="The multiplication of " + num1 + " and " + num2 +" is: "+ multiplication;
+                    console.log("First number: " + num1);
+                    console.log("Second number: " + num2);
+                    console.log("Multiplication: " + multiplication);
+                }
+            }
+
+            function division(){
+                const num1= document.getElementById("InputText1").value;
+                const num2= document.getElementById("InputText2").value;
+                if (isNaN(num1)===false && isNaN(num2)===false && num1 != "" && num2 != "" && num2 != 0) {
+                    const division_=Number(num1) / Number(num2);
+                    messageText.innerHTML="The division of " + num1 + "/ " + num2 +" is: "+ division_;
+                    console.log("First number: " + num1);
+                    console.log("Second number: " + num2);
+                    console.log("Division: " + division_);
+                }
+            }
+            let vextern=15;
+            function factorial(){
+                const num1= document.getElementById("InputText1").value;
+                let n = 1;
+                if (isNaN(num1)===false && num1 != "" && Number(num1)>=0){
+                    if (Number(num1)===0){
+
+                    }else {
+                        for(let i = num1; i>0; i--){
+                            n *= i;
+                        }
+
+                    }
+
+                }
+                
+                messageText.innerHTML="The factorial of " + num1 + " is: "+ n;
+                console.log("First number: " + num1);
+                console.log("Factorial: " + n);
+            }
+            
+            
+
+
+            document.getElementById("ActionButton1").addEventListener("click", validation_main)
+            document.getElementById("ActionButton1").addEventListener("click", sum)
+            document.getElementById("ActionButton2").addEventListener("click", validation_main)
+            document.getElementById("ActionButton2").addEventListener("click", subtraction)
+            document.getElementById("ActionButton3").addEventListener("click", validation_main)
+            document.getElementById("ActionButton3").addEventListener("click", multiply)
+
+            document.getElementById("ActionButton4").addEventListener("click", validationDivision)
+            document.getElementById("ActionButton4").addEventListener("click", division)
+            document.getElementById("ActionButton5").addEventListener("click", validationFactorial)
+            document.getElementById("ActionButton5").addEventListener("click", factorial)
+            
+        </script>
+
+    </body>
 </html>
