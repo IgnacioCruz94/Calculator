@@ -84,7 +84,12 @@
                     if (Number(input1)<0) throw "The factorial of a negative number does not exist";
                 } catch (error) {
                     console.log(error)
-                } 
+                }
+                try {
+                    if (Number(input1)>170) throw "The factorial of this number is too big to print it, try another lower number";
+                } catch (error) {
+                    console.log(error)
+                }
             }
 
             function sum() {
